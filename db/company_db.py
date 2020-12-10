@@ -1,30 +1,32 @@
-from typing import Dict
 from pydantic import BaseModel
 
-
 class CompanyInDB(BaseModel):
-    comp_id: int
-    comp_name: str
+    documentnumbercompany : int
+    documenttypecompany : str
+    personnamecompany : str
+    persontypecompany : str
+    addresscompany : str
+    countrycompany : str
+    citycompany : str
+    phonenumbercpmpany : str
+    emailcompany : str
 
+database_companies = Dict[str, CompanyInDB]
 
-database_company = Dict[int, CompanyInDB]
-
-database_company = {
-    1: CompanyInDB(**{"comp_id": 1,
-                      "comp_name": "Contadoras Unaleñas"}),
-
-    2: CompanyInDB(**{"comp_id": 2,
-                      "comp_name": "Emprendedores Unaleños"}),
+database_companies = {
+    "900354115": CompanyInDB((**{"documentnumbercompany":900354115,
+                            "documenttypecompany":"NIT",
+                            "personnamecompany":"La Comercializadora",
+                            "persontypecompany":"Persona Juridica",
+                            "addresscompany": "Cr 22 a 190",
+                            "countrycompany": "Colombia",
+                            "citycompany": "Bogota",
+                            "phonenumbercompany": "3206112020",
+                            "emailcompany": "lacomercializadora@lacomercializadora.com"}),
 }
 
-
-def get_empresa(comp_id: int):
-    if comp_id in database_company.keys():
-        return database_company[comp_id]
+def get_company(documentnumbercompany: int):
+    if documentnumbercompany in database_companies.keys():
+        return database_companies[personnamecompany]
     else:
         return None
-
-
-def update_empresa(company_in_db: CompanyInDB):
-    database_company[company_in_db.comp_id] = company_in_db
-    return company_in_db

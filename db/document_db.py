@@ -9,4 +9,3 @@ class DocumentInDB(BaseModel):
     doc_active: bool
     id_module: int
     id_company: int
-
