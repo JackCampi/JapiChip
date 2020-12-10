@@ -1,8 +1,11 @@
 from pydantic import BaseModel
 
 class UserIn(BaseModel):
-    username: str
-    password: str
-class UserOut(BaseModel):
-    username: str
-    balance: int
+    documentnumberuser: int
+    firstnameuser: str
+    lastnameuser: str
+    emailuser: str
+    passworduser: str
+    typeofuser: str
+    documentnumbercompany : int
+
