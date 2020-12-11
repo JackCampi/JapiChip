@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 class ProcessInDB(BaseModel):
-    id_user: int
-    id_document: int
-    id_expiration: int
+    user_email: str
+    doc_id: int
+    expiration_id: int
     proc_ready: bool

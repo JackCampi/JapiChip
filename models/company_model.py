@@ -1,14 +1,14 @@
 from pydantic import BaseModel
 
-class Company(BaseModel):
-    documentnumbercompany : int
-    documenttypecompany : str
-    personnamecompany : str
-    persontypecompany : str
-    addresscompany : str
-    countrycompany : str
-    citycompany : str
-    phonenumbercpmpany : str
-    emailcompany : str
+class CompanyIn(BaseModel):
+    comp_id : int
+    comp_id_type : str
+    comp_name : str
+    comp_type : str
+    comp_address : str
+    comp_country : str
+    comp_city : str
+    comp_phone : str
+    comp_email : str
 
         

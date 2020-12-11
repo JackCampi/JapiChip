@@ -3,42 +3,47 @@ from datetime import date
 from typing import Dict
 
 class UserInDB(BaseModel):
-    documentnumberuser: int
-    firstnameuser: str
-    lastnameuser: str
-    emailuser: str
-    passworduser: str
-    typeofuser: str
-    documentnumbercompany : int
+    user_email: str
+    user_name: str
+    user_last_name: str
+    user_password: str
+    user_role: str
+    comp_id : int
 
 database_users = Dict[str, UserInDB]
 
 database_users = {
-    "ricardo": UserInDB(**{"documentnumberuser":1053820000,
-                            "firstnameuser":"Ricardo",
-                            "lastnameuser": "Jaramillo",
-                            "emailuser": "administrador@lacomercializadora.com",
-                            "passworduser": "321",
-                            "typeofuser" : "administrador",
-                            "documentnumbercompany": 900354115
+    "administrador@lacomercializadora.com": UserInDB(**{"user_email": "administrador@lacomercializadora.com",
+                            "user_name":"Ricardo",
+                            "user_last_name": "Jaramillo",
+                            "user_password": "321",
+                            "user_role" : "administrador",
+                            "comp_id": 900354115
                             }),
 
-    "rosa": UserInDB(**{"documentnumberuser":75202000,
-                            "firstnameuser":"Rosa",
-                            "lastnameuser": "Gonzalez",
-                            "emailuser": "asistente@lacomercializadora.com",
-                            "passworduser": "321",
-                            "typeofuser" : "asistente",
-                            "documentnumbercompany": 900354115
+    "asistente@lacomercializadora.com": UserInDB(**{"user_email": "asistente@lacomercializadora.com",
+                            "user_name":"Rosa",
+                            "user_last_name": "Gonzalez",
+                            "user_password": "321",
+                            "user_role" : "asistente",
+                            "comp_id": 900354115
+                            }),
+
+    "admin@contadorasunalenas.com": UserInDB(**{"user_email": "admin@contadorasunalenas.com",
+                            "user_name":"Andrea",
+                            "user_last_name": "Torres",
+                            "user_password": "admin",
+                            "user_role" : "administrador",
+                            "comp_id": 900354120
                             }),
 }
 
-def get_user(username: str):
-    if username in database_users.keys():
-        return database_users[username]
+def get_user(user_email: str):
+    if user_email in database_users.keys():
+        return database_users[user_email]
     else:
         return None
 
 def update_user(user_in_db: UserInDB):
-    database_users[user_in_db.username] = user_in_db
+    database_users[user_in_db.user_email] = user_in_db
     return user_in_db

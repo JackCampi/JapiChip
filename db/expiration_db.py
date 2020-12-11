@@ -2,10 +2,10 @@ from pydantic import BaseModel
 from datetime import date
 
 class ExpirationInDB(BaseModel):
-    id_exp: int
+    exp_id: int
     exp_date: date
     exp_periodicity: int
-    exp_periodiciyy_type: str
+    exp_periodicity_type: str
 
 database_expiration = [ExpirationInDB(**{
     'id_exp': 0,
@@ -13,12 +13,10 @@ database_expiration = [ExpirationInDB(**{
     'exp_periodicity': 0,
     'exp_periodicity_type': None
 })]
-generator = {'id': 1}
 
-database_expiration.append(0)
 
-def create_expiration(expiration_in_db: ExpirationInDB):
-    generator['id'] = generator['id'] + 1
-    expiration_in_db.id_exp = generator['id']
+
+def insert_expiration(expiration_in_db: ExpirationInDB):
+    expiration_in_db.id_exp = len(database_expiration)
     database_expiration.append(expiration_in_db)
     return expiration_in_db
