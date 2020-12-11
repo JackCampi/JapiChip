@@ -3,7 +3,7 @@ from datetime import date
 from typing import Dict
 
 class ModuleInDB(BaseModel):
-    mod_id : int
+    mod_id : int = 0
     mod_name : str
     comp_id : int
     mod_parent_id : int
@@ -39,7 +39,7 @@ database_module = [
                     "mod_parent_id":4}),
 ]
 
-def insert_module(module: ModuleInDB):
+def insert_module2(module: ModuleInDB):
     parent = database_module[module.mod_parent_id]
     if parent.comp_id == module.comp_id:
         module.mod_id = len(database_module)

@@ -49,6 +49,6 @@ def get_company(emp_id: int):
         return None
 
 
-def update_company(empresa_in_db: EmpresaInDB):
+def update_company(empresa_in_db: CompanyInDB):
     database_empresas[empresa_in_db.emp_id] = empresa_in_db
     return empresa_in_db
