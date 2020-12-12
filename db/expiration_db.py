@@ -1,22 +1,38 @@
 from pydantic import BaseModel
 from datetime import date
 
+
 class ExpirationInDB(BaseModel):
     exp_id: int
-    exp_date: date
+    exp_date: str
     exp_periodicity: int
     exp_periodicity_type: str
 
-database_expiration = [ExpirationInDB(**{
-    'id_exp': 0,
-    'exp_date': date.today(),
-    'exp_periodicity': 0,
-    'exp_periodicity_type': None
-})]
 
+database_expiration = []
 
 
 def insert_expiration(expiration_in_db: ExpirationInDB):
-    expiration_in_db.id_exp = len(database_expiration)
+    expiration_in_db.exp_id = len(database_expiration)+1
     database_expiration.append(expiration_in_db)
     return expiration_in_db
+
+
+def search_expiration(exp_id: int):
+    for expiration in database_expiration:
+        if expiration.exp_id == exp_id:
+            return expiration
+
+
+def delete_expiration(exp_id: int):
+    for expiration in database_expiration:
+        if expiration.exp_id == exp_id:
+            expiration.exp_id = -1
+
+
+def update_expiration_db(datas):
+    for expiration in database_expiration:
+        if expiration.exp_id == datas.exp_id:
+            expiration = ExpirationInDB(**datas.dict())
+            return True
+        return False

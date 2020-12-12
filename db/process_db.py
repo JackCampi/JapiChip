@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+
 class ProcessInDB(BaseModel):
     proc_id: int = 0
     user_email: str
@@ -7,7 +8,14 @@ class ProcessInDB(BaseModel):
     expiration_id: int
     proc_ready: bool
 
-database_process = []
+
+database_process = [ProcessInDB(**{
+    "proc_id": 2,
+    "user_email": "hola@hotmail.com",
+    "doc_id": 20,
+    "expiration_id": 0,
+    "proc_ready": True
+})]
 
 
 def create_process(process_in_db: ProcessInDB):
@@ -15,9 +23,28 @@ def create_process(process_in_db: ProcessInDB):
     database_process.append(process_in_db)
     return process_in_db
 
-def  get_user_docs_id(user_email):
+
+def get_user_docs_id(user_email):
     docs = []
     for process in database_process:
-        if  process.user_email == user_email:
+        if process.user_email == user_email:
             docs.append(process.doc_id)
     return docs
+
+
+def search_doc_id(doc_id: int):
+    for process in database_process:
+        if process.doc_id == doc_id:
+            return process
+
+
+def put_expiration_id(expiration_id: int, doc_id: int):
+    for process in database_process:
+        if process.doc_id == doc_id:
+            process.expiration_id = expiration_id
+
+
+def delete_expiration_id(doc_id: int):
+    for process in database_process:
+        if process.doc_id == doc_id:
+            process.expiration_id == 0
