@@ -9,7 +9,12 @@ class ExpirationInDB(BaseModel):
     exp_periodicity_type: str
 
 
-database_expiration = []
+database_expiration = [ExpirationInDB(**{
+    "exp_id": 0,
+    "exp_date":"12-05-2019",
+    "exp_periodicity": 0,
+    "exp_periodicity_type": "no exp"  
+})]
 
 
 def insert_expiration(expiration_in_db: ExpirationInDB):

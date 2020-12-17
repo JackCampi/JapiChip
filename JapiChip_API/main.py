@@ -25,6 +25,16 @@ from models.company_model import CompanyIn
 
 api = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware
+origins = [
+"http://localhost.tiangolo.com", "https://localhost.tiangolo.com",
+"http://localhost", "http://localhost:8080","http://localhost:8081",
+]
+api.add_middleware(
+CORSMiddleware, allow_origins=origins,
+allow_credentials=True, allow_methods=["*"], allow_headers=["*"],
+)
+
 @api.post('/docs/upload/')
 async def update_file_info(doc_info: DocumentIn):
     document = DocumentInDB(**{
@@ -60,13 +70,25 @@ async def get_docs_from_user(user_email: str):
     
     docs_id = get_user_docs_id(user_email)
     docs = []
-    for doc_id in docs_id:
-        docs.append(get_doc(doc_id))
+    for doc_id, exp_id, proc_ready in docs_id:
+        d = dict(**get_doc(doc_id).dict())
+        d = dict(d,**search_expiration(exp_id).dict())
+        d = dict(d, **{"proc_ready": proc_ready})
+        docs.append(d)
     return {
         'item_found': len(docs),
         'items': docs
     }
 
+@api.get('/user/{user_email}')
+async def get_username(user_email: str):
+    user_in_db = get_user(user_email)
+    if user_in_db == None:
+        raise HTTPException(status_code=404,
+                            detail=f"El usuario {user_email} no existe")
+    return {
+        'username': user_in_db.user_name
+    }
 
 @api.post("/user/auth/")
 async def auth_user(user : UserIn):

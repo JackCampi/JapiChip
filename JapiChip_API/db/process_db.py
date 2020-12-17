@@ -11,8 +11,20 @@ class ProcessInDB(BaseModel):
 
 database_process = [ProcessInDB(**{
     "proc_id": 2,
-    "user_email": "hola@hotmail.com",
-    "doc_id": 20,
+    "user_email": "asistente@lacomercializadora.com",
+    "doc_id": 0,
+    "expiration_id": 0,
+    "proc_ready": True
+}),ProcessInDB(**{
+    "proc_id": 2,
+    "user_email": "asistente@lacomercializadora.com",
+    "doc_id": 1,
+    "expiration_id": 0,
+    "proc_ready": True
+}),ProcessInDB(**{
+    "proc_id": 2,
+    "user_email": "asistente@lacomercializadora.com",
+    "doc_id": 2,
     "expiration_id": 0,
     "proc_ready": True
 })]
@@ -28,7 +40,7 @@ def get_user_docs_id(user_email):
     docs = []
     for process in database_process:
         if process.user_email == user_email:
-            docs.append(process.doc_id)
+            docs.append((process.doc_id, process.expiration_id, process.proc_ready))
     return docs
 
 
