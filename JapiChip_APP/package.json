@@ -13,6 +13,7 @@
     "@pdftron/webviewer": "^7.2.0",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
+    "bootstrap-icons": "^1.2.1",
     "bootstrap-vue": "^2.21.1",
     "pdfjs-dist": "^2.5.207",
     "vue": "^2.6.12",

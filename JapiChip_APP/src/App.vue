@@ -10,8 +10,8 @@
         <button > Home </button>
         <button > Docs </button>
         <button > Contact Us </button>
-        
-      </nav><button >Log Out</button>
+        <button >Log Out</button>
+      </nav>
     </div>
     <div class="main-component">
       <router-view></router-view>

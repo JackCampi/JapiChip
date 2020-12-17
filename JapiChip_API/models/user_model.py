@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
 class UserIn(BaseModel):
-    user_id: int
     user_name: str
     user_last_name: str
     user_email: str

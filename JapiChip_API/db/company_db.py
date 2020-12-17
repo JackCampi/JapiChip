@@ -40,7 +40,7 @@ def insert_company(comp:CompanyInDB):
     if comp.comp_id in database_companies.keys():
         raise Exception("Company already exists")
     else:
-        database_companies[comp.comp_id] = CompanyInDB
+        database_companies[comp.comp_id] = comp
 
 def get_company(emp_id: int):
     if emp_id in database_companies.keys():

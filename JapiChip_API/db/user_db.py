@@ -38,6 +38,12 @@ database_users = {
                             }),
 }
 
+def insert_user(user:UserInDB):
+    if user.user_email in database_users.keys():
+        raise Exception("User already exists")
+    else:
+        database_users[user.user_email] = user
+
 def get_user(user_email: str):
     if user_email in database_users.keys():
         return database_users[user_email]

@@ -149,11 +149,11 @@ export default {
           comp_id : this.comp_id
         }
 
-        axios.post('localhost:8000/new_company/', company_dic)
+        axios.post('http://localhost:8000/new_company/', company_dic)
           .then((response) => {
             alert(response)
           }).catch((error) => {alert(error)})
-        axios.post('localhost:8000/new_user/', user_dic)
+        axios.post('http://localhost:8000/new_user/', user_dic)
           .then((response) => {
             alert(response)
           }).catch((error) => {alert(error)})

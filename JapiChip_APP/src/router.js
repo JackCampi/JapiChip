@@ -2,6 +2,7 @@ import vueRouter from 'vue-router'
 import DocsEdit from './components/DocsEdit'
 import App from './App'
 import Home from './components/Home'
+import Register from './components/Register'
 
 const router = new vueRouter({
         mode: 'history',
@@ -22,6 +23,11 @@ const router = new vueRouter({
                 name: "DocsEdit",
                 component: DocsEdit
             },
+            {
+                path: '/register',
+                name: 'Register',
+                component: Register
+            }
         ]
     })
 

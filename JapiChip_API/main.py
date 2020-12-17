@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-from db.user_db import get_user
+from db.user_db import get_user, insert_user
 
 from db.document_db import DocumentInDB
 from db.document_db import insert_doc, get_doc, get_doc_by_name, update_doc_active
@@ -117,6 +117,16 @@ async def create_module(module : ModuleIn):
     else:
         raise HTTPException(status_code=404,
                             detail="El módulo padre no existe")
+
+
+@api.post("/new_user/")
+async def create_user(user_in: UserIn):
+    try:
+        insert_user(user_in)
+        return {"Created" : True}
+    except Exception as e:
+        raise HTTPException(status_code=400,
+                            detail= str(e))
 
 
 @api.post("/new_company/")
