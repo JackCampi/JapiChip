@@ -151,9 +151,6 @@ body{
     height: 45vh;
     width: 40%;
 }
-.expiration-container{
-    /*background-color: darkgoldenrod;*/
-}
 .expiration-item{
     /*background-color: azure;*/
     margin-bottom: 10px;

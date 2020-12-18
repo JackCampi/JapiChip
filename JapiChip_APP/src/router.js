@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Register from './components/Register'
 import Login from './components/Login'
 import LogOut from './components/LogOut'
+import ContactUs from './components/ContactUs'
 
 const router = new vueRouter({
     mode: 'history',
@@ -38,6 +39,11 @@ const router = new vueRouter({
             path: '/logout',
             name: 'LogOut',
             component: LogOut
+        },
+        {
+            path: '/contact',
+            name: 'ContactUs',
+            component: ContactUs
         }
     ]
 })

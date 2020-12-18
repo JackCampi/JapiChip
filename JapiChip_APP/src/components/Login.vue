@@ -63,21 +63,7 @@
 </script>
 
 <style>
-    @font-face {
-        font-family: "Lobster";
-        src: url("../../static/fonts/Lobster-Regular.ttf");
-    }
 
-    @font-face {
-        font-family: "Chivo";
-        src: url("../../static/fonts/Chivo-Regular.ttf");
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        font-family: "Chivo";
-    }
 
     #login {
         width: 100%;

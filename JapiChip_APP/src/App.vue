@@ -7,7 +7,7 @@
       </div>
       <!--<h1>LA COMERCIALIZADORA</h1>-->
       <nav>
-        <button > Home </button>
+        <button v-on:click="init"> Home </button>
         <button > Docs </button>
         <button > Contact Us </button>
         <button >Log Out</button>
